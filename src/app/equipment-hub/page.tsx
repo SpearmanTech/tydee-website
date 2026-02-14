@@ -1,22 +1,33 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef } from "react";
 import { 
   Hammer, Truck, ShieldCheck, LineChart, 
-  MapPin, Zap, Layers, ChevronRight, Video
+  MapPin, Zap, Layers, Video, ArrowLeft
 } from "lucide-react";
+import Link from "next/link";
 import Navbar from "@/../components/shared/Navbar";
 import Footer from "@/../components/shared/Footer";
 
-export default function EquipmentRentalsPage() {
+export default function EquipmentHubPage() {
   const containerRef = useRef(null);
   
   return (
     <main className="bg-[#050505] text-white min-h-screen selection:bg-indigo-500">
       <Navbar />
 
+      {/* Navigation & Status */}
+      <div className="pt-32 px-6 max-w-7xl mx-auto flex justify-between items-center">
+        <Link href="/" className="flex items-center gap-2 text-slate-400 hover:text-indigo-600 transition-colors font-bold text-xs uppercase tracking-widest">
+          <ArrowLeft size={16} /> Back to Ecosystem
+        </Link>
+        <span className="bg-amber-500/10 text-amber-500 border border-amber-500/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] animate-pulse">
+          Coming Q1 2027
+        </span>
+      </div>
+
       {/* 1. HERO: THE VISION */}
-      <section className="pt-40 pb-20 px-6 relative overflow-hidden">
+      <section className="pt-12 pb-20 px-6 relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -24,7 +35,7 @@ export default function EquipmentRentalsPage() {
             transition={{ duration: 0.8 }}
           >
             <span className="bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-[0.3em] mb-8 inline-block">
-              Coming Soon: Q1 2027
+              Distributed Warehouse Infrastructure
             </span>
             <h1 className="text-7xl md:text-9xl font-black tracking-tighter leading-[0.8] mb-8">
               ACCESS IS <br />
@@ -35,11 +46,10 @@ export default function EquipmentRentalsPage() {
             </p>
           </motion.div>
         </div>
-        {/* Background Ambient Glow */}
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-indigo-600/10 blur-[150px] -z-10" />
       </section>
 
-      {/* 2. THE THREE-WAY ECONOMY (The Ecosystem) */}
+      {/* 2. THE THREE-WAY ECONOMY */}
       <section className="py-24 px-6 bg-white text-slate-900 rounded-[4rem]">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-3 gap-8">
@@ -65,7 +75,7 @@ export default function EquipmentRentalsPage() {
         </div>
       </section>
 
-      {/* 3. MARKET INTELLIGENCE: DEMAND MAP 2.0 */}
+      {/* 3. MARKET INTELLIGENCE */}
       <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
           <div>
@@ -104,22 +114,22 @@ export default function EquipmentRentalsPage() {
         </div>
       </section>
 
-      {/* 4. THE TYDEE SHIELD (Trust Layer) */}
+      {/* 4. THE TYDEE SHIELD */}
       <section className="py-32 px-6 bg-indigo-600 rounded-[4rem]">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-5xl md:text-7xl font-black mb-16 tracking-tighter">The Tydee Shield.</h2>
           <div className="grid md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center text-white">
               <div className="bg-white/10 p-6 rounded-full mb-6"><Video size={40}/></div>
               <h4 className="text-2xl font-bold mb-4">AI Chain of Custody</h4>
               <p className="text-indigo-100 font-light text-sm">Mandatory video handoffs with AI-assisted damage detection.</p>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center text-white">
               <div className="bg-white/10 p-6 rounded-full mb-6"><ShieldCheck size={40}/></div>
               <h4 className="text-2xl font-bold mb-4">Micro-Insurance</h4>
               <p className="text-indigo-100 font-light text-sm">5% Protection Fee baked into every job covers accidental damage.</p>
             </div>
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center text-white">
               <div className="bg-white/10 p-6 rounded-full mb-6"><Zap size={40}/></div>
               <h4 className="text-2xl font-bold mb-4">Biometric Staking</h4>
               <p className="text-indigo-100 font-light text-sm">High-value gear requires biometric verification & Trust Score 4.5+.</p>

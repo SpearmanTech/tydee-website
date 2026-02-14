@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Tydee | Services on Demand",
+  title: "Tydee",
   description: "Durban's premium on-demand service platform.",
 };
 

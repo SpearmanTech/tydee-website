@@ -53,7 +53,7 @@ export default function ProPath() {
 
     if (id === "equipment-rentals") {
       // This will now work in the app directory
-      router.push("@/pages/equipment-rentals");
+      router.push("/equipment-hub")
       return;
     }
 

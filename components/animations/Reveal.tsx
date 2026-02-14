@@ -3,12 +3,13 @@ import React, { useEffect, useRef } from "react";
 import { motion, useInView, useAnimation } from "framer-motion";
 
 interface Props {
-  children: JSX.Element;
+  // Use React.ReactNode for broader compatibility
+  children: React.ReactNode; 
   width?: "fit-content" | "100%";
 }
 
 export const Reveal = ({ children, width = "fit-content" }: Props) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null); // Typed the ref for better TS support
   const isInView = useInView(ref, { once: true });
   const mainControls = useAnimation();
 

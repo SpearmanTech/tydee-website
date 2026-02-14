@@ -2,6 +2,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { TrendingUp, ShieldCheck, Zap, ArrowRight, HardHat, Hammer } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 interface Benefit {
   title: string;
@@ -44,9 +45,18 @@ const benefits: Benefit[] = [
 
 export default function ProPath() {
   const scrollRef = useRef(null);
+  // 2. THIS NOW USES THE APP ROUTER:
+  const router = useRouter(); 
 
-  const scrollToSection = (id?: string) => {
+  const handleNavigation = (id?: string) => {
     if (!id) return;
+
+    if (id === "equipment-rentals") {
+      // This will now work in the app directory
+      router.push("@/pages/equipment-rentals");
+      return;
+    }
+
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -80;
@@ -54,6 +64,7 @@ export default function ProPath() {
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   };
+
 
   return (
     <section id="pro" className="py-32 bg-[#0a0f1e] overflow-hidden">
@@ -73,18 +84,17 @@ export default function ProPath() {
         </motion.div>
       </div>
 
-      {/* Carousel Container */}
       <div className="relative cursor-grab active:cursor-grabbing">
         <motion.div 
           drag="x"
-          dragConstraints={{ right: 0, left: -800 }} // Adjust left constraint based on card count
+          dragConstraints={{ right: 0, left: -800 }} 
           className="flex gap-8 px-6 lg:px-[calc((100vw-1280px)/2)]"
         >
           {benefits.map((benefit, idx) => (
             <motion.div
               key={idx}
-              onClick={() => scrollToSection(benefit.id)}
-              className="min-w-[350px] md:min-w-[450px] group relative p-10 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-3xl hover:border-indigo-500/50 transition-all duration-500"
+              onClick={() => handleNavigation(benefit.id)} // Updated function call
+              className="min-w-[350px] md:min-w-[450px] group relative p-10 rounded-[3rem] bg-white/5 border border-white/10 backdrop-blur-3xl hover:border-indigo-500/50 transition-all duration-500 cursor-pointer"
             >
               <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${benefit.color} p-[1px] mb-10`}>
                 <div className="w-full h-full bg-[#0a0f1e] rounded-[calc(1rem-1px)] flex items-center justify-center text-white">
@@ -98,7 +108,8 @@ export default function ProPath() {
               </p>
 
               <div className="flex items-center text-xs font-black tracking-widest text-indigo-400 group-hover:text-white transition-all uppercase">
-                Explore Feature <ArrowRight size={18} className="ml-3 group-hover:translate-x-2 transition-transform" />
+                {benefit.id === "equipment-rentals" ? "View Coming Soon" : "Explore Feature"} 
+                <ArrowRight size={18} className="ml-3 group-hover:translate-x-2 transition-transform" />
               </div>
             </motion.div>
           ))}

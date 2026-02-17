@@ -38,7 +38,7 @@ export default function UserPath() {
               className="absolute -top-4 -right-6 md:-top-6 md:-right-12 bg-white p-3 md:p-4 rounded-xl md:rounded-2xl shadow-xl border border-slate-100 flex items-center gap-2 md:gap-3 z-30"
             >
               <div className="bg-green-100 p-1.5 md:p-2 rounded-full">
-                <ShieldCheck className="text-green-600" size={16} md={20}/>
+                <ShieldCheck className="text-green-600 w-4 h-4 md:w-5 md:h-5" />
               </div>
               <p className="text-[10px] md:text-xs font-bold whitespace-nowrap text-slate-800">Verified Pro On-Site</p>
             </motion.div>
@@ -57,7 +57,7 @@ export default function UserPath() {
           <ul className="space-y-6 md:space-y-8 text-left max-w-md mx-auto lg:mx-0">
             <li className="flex items-start gap-4 md:gap-5">
               <div className="bg-indigo-50 p-3 rounded-xl md:rounded-2xl text-[#4f46e5] shrink-0">
-                <Gavel size={22} md={24} />
+                <Gavel className="w-[22px] h-[22px] md:w-6 md:h-6" />
               </div>
               <div>
                 <h4 className="font-black text-base md:text-lg text-[#0a0f1e]">Smart Bidding</h4>
@@ -66,7 +66,7 @@ export default function UserPath() {
             </li>
             <li className="flex items-start gap-4 md:gap-5">
               <div className="bg-indigo-50 p-3 rounded-xl md:rounded-2xl text-[#4f46e5] shrink-0">
-                <MapPin size={22} md={24} />
+                <MapPin className="w-[22px] h-[22px] md:w-6 md:h-6" />
               </div>
               <div>
                 <h4 className="font-black text-base md:text-lg text-[#0a0f1e]">Durban-Centric</h4>

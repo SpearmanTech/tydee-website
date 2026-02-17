@@ -8,6 +8,7 @@ export default function SuccessPage() {
 
   return (
     <main className="min-h-screen bg-[#050505] text-white flex flex-col items-center py-12 md:py-20 px-6 overflow-x-hidden">
+      
       {/* 1. Main Grid: Stacks on mobile, side-by-side on desktop */}
       <div className="max-w-4xl w-full grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-12 items-center">
         
@@ -18,7 +19,7 @@ export default function SuccessPage() {
           className="text-center md:text-left order-1"
         >
           <div className="w-16 h-16 bg-indigo-500/20 rounded-2xl flex items-center justify-center mb-6 border border-indigo-500/30 mx-auto md:mx-0">
-            <CheckCircle2 className="text-indigo-400" size={32} />
+            <CheckCircle2 className="text-indigo-400 w-8 h-8" />
           </div>
           
           <h1 className="text-4xl md:text-6xl font-black tracking-tighter mb-4 leading-none">
@@ -40,7 +41,7 @@ export default function SuccessPage() {
               href={`https://wa.me/?text=${whatsappMessage}`}
               className="bg-[#25D366] text-black px-8 py-4 rounded-2xl font-black flex items-center justify-center gap-3 hover:scale-105 transition-transform active:scale-95 shadow-xl shadow-green-500/10"
             >
-              <MessageCircle size={20} /> SHARE ON WHATSAPP
+              <MessageCircle className="w-5 h-5" /> SHARE ON WHATSAPP
             </a>
           </div>
         </motion.div>
@@ -48,7 +49,7 @@ export default function SuccessPage() {
         {/* RIGHT COLUMN: APP MOCKUP & QR */}
         <div className="relative flex flex-col items-center order-2">
           
-          {/* Mock App Animation: Scaled for mobile */}
+          {/* Mock App Animation */}
           <div className="relative w-[260px] md:w-[280px] h-[520px] md:h-[580px] bg-[#111] rounded-[2.5rem] md:rounded-[3rem] border-[6px] md:border-[8px] border-[#222] overflow-hidden shadow-[0_0_80px_rgba(79,70,229,0.15)]">
             <div className="absolute top-0 w-full h-6 bg-[#222] flex justify-center items-end pb-1">
               <div className="w-12 md:w-16 h-1 bg-white/10 rounded-full" />
@@ -77,7 +78,7 @@ export default function SuccessPage() {
             </motion.div>
           </div>
 
-          {/* QR CODE SECTION: Centered and responsive */}
+          {/* QR CODE SECTION */}
           <motion.div 
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -85,13 +86,13 @@ export default function SuccessPage() {
             className="absolute -bottom-8 md:-bottom-10 bg-white p-4 md:p-6 rounded-[1.5rem] md:rounded-[2rem] shadow-2xl flex items-center gap-4 md:gap-6 border border-slate-200 w-[90%] md:w-auto"
           >
             <div className="bg-slate-100 p-2 rounded-xl shrink-0">
-               <QrCode size={48} md={64} className="text-black" />
+               <QrCode className="text-black w-12 h-12 md:w-16 md:h-16" />
             </div>
             <div className="text-left text-black">
               <p className="font-black text-[10px] md:text-sm uppercase leading-none">Download App</p>
               <p className="text-[8px] md:text-[10px] text-slate-500 font-bold mt-1">SCAN TO INSTALL EXPO</p>
               <div className="flex gap-2 mt-2">
-                <Smartphone size={14} md={16} className="text-indigo-600" />
+                <Smartphone className="text-indigo-600 w-3.5 h-3.5 md:w-4 md:h-4" />
                 <span className="text-[8px] md:text-[9px] font-black uppercase tracking-tighter">iOS & Android</span>
               </div>
             </div>
@@ -99,7 +100,7 @@ export default function SuccessPage() {
         </div>
       </div>
 
-      {/* Ambient background glow for mobile depth */}
+      {/* Ambient background glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-indigo-600/10 blur-[100px] md:blur-[150px] -z-10" />
     </main>
   );

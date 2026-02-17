@@ -46,7 +46,7 @@ export default function Hero() {
             
             <Link href="/pro" className="w-full md:w-auto">
               <button className="w-full md:w-auto bg-white text-black px-8 md:px-12 py-5 md:py-6 rounded-full font-black text-lg md:text-xl active:scale-95 transition-all flex items-center justify-center gap-2">
-                Join as Pro <ArrowRight size={20} />
+                Join as Pro <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
               </button>
             </Link>
           </div>
@@ -54,9 +54,9 @@ export default function Hero() {
           {/* Trust Signals: Horizontal scrollable on mobile, flex-wrap on desktop */}
           <div className="w-full md:w-auto overflow-x-auto no-scrollbar py-2">
             <div className="flex md:flex-wrap justify-start md:justify-center gap-6 md:gap-12 bg-black/60 backdrop-blur-xl p-5 md:p-6 rounded-[2rem] border border-white/10 min-w-max md:min-w-0">
-              <Signal icon={<CheckCircle2 size={18}/>} text="SAB Backed" />
-              <Signal icon={<Users size={18}/>} text="100+ Pros" />
-              <Signal icon={<Star size={18}/>} text="Africa's #1" />
+              <Signal icon={<CheckCircle2 className="w-4 h-4 md:w-5 md:h-5"/>} text="SAB Backed" />
+              <Signal icon={<Users className="w-4 h-4 md:w-5 md:h-5"/>} text="100+ Pros" />
+              <Signal icon={<Star className="w-4 h-4 md:w-5 md:h-5"/>} text="Africa's #1" />
             </div>
           </div>
         </motion.div>

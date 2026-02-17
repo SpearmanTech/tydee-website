@@ -27,11 +27,11 @@ export default function EarningsFeature() {
 
             <div className="space-y-3 md:space-y-4 max-w-md mx-auto lg:mx-0">
               <div className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 text-left">
-                <CheckCircle2 className="text-green-500 shrink-0" size={20} md={24} />
+                <CheckCircle2 className="text-green-500 shrink-0 w-5 h-5 md:w-6 md:h-6" />
                 <span className="font-bold text-sm md:text-base text-slate-700">Automated Weekly Payouts</span>
               </div>
               <div className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl md:rounded-2xl bg-slate-50 border border-slate-100 text-left">
-                <CheckCircle2 className="text-green-500 shrink-0" size={20} md={24} />
+                <CheckCircle2 className="text-green-500 shrink-0 w-5 h-5 md:w-6 md:h-6" />
                 <span className="font-bold text-sm md:text-base text-slate-700">Zero Invoicing Hassle</span>
               </div>
             </div>
@@ -49,7 +49,7 @@ export default function EarningsFeature() {
                 <h3 className="text-3xl md:text-5xl font-black text-white">R 4,850.00</h3>
               </div>
               <div className="bg-indigo-500/20 p-3 md:p-4 rounded-2xl md:rounded-3xl">
-                <Wallet className="text-indigo-400" size={24} md={32} />
+                <Wallet className="text-indigo-400 w-6 h-6 md:w-8 md:h-8" />
               </div>
             </div>
 
@@ -79,7 +79,7 @@ export default function EarningsFeature() {
                 <div key={i} className="flex justify-between items-center p-3 md:p-4 bg-white/5 rounded-xl md:rounded-2xl border border-white/5">
                   <div className="flex items-center gap-3 md:gap-4">
                     <div className="p-1.5 md:p-2 bg-green-500/10 rounded-lg text-green-500">
-                      <ArrowUpRight size={14} md={16} />
+                      <ArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4" />
                     </div>
                     <div>
                       <p className="text-white text-xs md:text-sm font-bold">{item.label}</p>
@@ -93,12 +93,12 @@ export default function EarningsFeature() {
 
             {/* Payout CTA */}
             <button className="w-full mt-8 md:mt-10 bg-white text-[#0a0f1e] py-4 md:py-5 rounded-xl md:rounded-2xl font-black text-sm md:text-base flex items-center justify-center gap-2 md:gap-3 hover:bg-indigo-500 hover:text-white transition-all active:scale-[0.98]">
-              <Landmark size={18} md={20} />
+              <Landmark className="w-4.5 h-4.5 md:w-5 md:h-5" />
               Withdraw Funds
             </button>
           </div>
 
-          {/* Background Glow - Scaled down for mobile */}
+          {/* Background Glow */}
           <div className="absolute -top-5 -right-5 md:-top-10 md:-right-10 w-48 h-48 md:w-64 md:h-64 bg-indigo-500/20 blur-[60px] md:blur-[100px]" />
         </div>
 

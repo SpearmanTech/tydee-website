@@ -19,7 +19,7 @@ export default function SafetyFeature() {
                   className="bg-white p-4 md:p-6 rounded-2xl md:rounded-3xl shadow-lg border border-slate-100 flex items-center gap-4 md:gap-6 mb-4 md:mb-6"
                 >
                   <div className="h-12 w-12 md:h-16 md:w-16 bg-indigo-100 rounded-xl md:rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
-                    <MapPin size={24} md={32} />
+                    <MapPin className="w-6 h-6 md:w-8 md:h-8" />
                   </div>
                   <div>
                     <p className="text-[8px] md:text-[10px] font-black text-indigo-500 uppercase tracking-widest mb-1">Live Tracking</p>
@@ -39,17 +39,17 @@ export default function SafetyFeature() {
                       </div>
                     </div>
                     <div className="flex items-center gap-1 bg-yellow-50 px-2 py-1 rounded-full text-yellow-600 text-[10px] md:text-xs font-bold">
-                      <Star size={10} md={12} fill="currentColor" /> 4.9
+                      <Star className="w-2.5 h-2.5 md:w-3 md:h-3" fill="currentColor" /> 4.9
                     </div>
                   </div>
                   
                   {/* Safety Badges */}
                   <div className="grid grid-cols-1 xs:grid-cols-2 gap-2 md:gap-3">
                     <div className="flex items-center gap-2 text-[8px] md:text-[10px] font-bold text-slate-400 uppercase tracking-tight">
-                      <ShieldCheck size={14} className="text-green-500" /> Vetted Background
+                      <ShieldCheck className="w-3.5 h-3.5 md:w-4 md:h-4 text-green-500" /> Vetted Background
                     </div>
                     <div className="flex items-center gap-2 text-[8px] md:text-[10px] font-bold text-slate-400 uppercase tracking-tight">
-                      <PhoneCall size={14} className="text-blue-500" /> SOS Support
+                      <PhoneCall className="w-3.5 h-3.5 md:w-4 md:h-4 text-blue-500" /> SOS Support
                     </div>
                   </div>
                 </div>
@@ -81,7 +81,7 @@ export default function SafetyFeature() {
             <div className="space-y-4 md:space-y-6 max-w-md mx-auto lg:mx-0 text-left">
               <div className="flex gap-4 items-start p-4 bg-white rounded-2xl border border-slate-100 shadow-sm">
                 <div className="bg-indigo-50 p-2 md:p-3 rounded-xl md:rounded-2xl text-indigo-600 shrink-0">
-                  <ShieldCheck size={20} md={24} />
+                  <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
                 <div>
                   <h5 className="font-bold text-slate-900 text-base md:text-lg">Identity Verified</h5>

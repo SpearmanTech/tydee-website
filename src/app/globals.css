@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-  /* Premium Palette */
   --color-tydee-indigo: #4f46e5;
   --color-tydee-magenta: #ff00ff;
   --color-tydee-pro: #0000aa;
@@ -13,11 +12,25 @@
   --font-inter: "Inter", sans-serif;
 }
 
+/* Mobile-First Base Styles */
+html, body {
+  @apply overflow-x-hidden w-full; /* Prevents horizontal scroll on small screens */
+  scroll-behavior: smooth;
+}
+
 body {
   @apply antialiased selection:bg-tydee-indigo selection:text-white bg-white text-tydee-black;
   font-family: var(--font-inter);
+  /* Fix for iOS "rubber banding" background color */
+  background-color: #050505; 
 }
 
-/* Premium Scrollbar */
-::-webkit-scrollbar { width: 5px; }
-::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
+/* Premium Scrollbar - Hidden on small mobile for cleaner UI */
+@media (min-width: 768px) {
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-thumb { background: #4f46e5; border-radius: 10px; }
+}
+
+/* Utility to hide scrollbars while allowing touch swiping (for your Trust Signals) */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

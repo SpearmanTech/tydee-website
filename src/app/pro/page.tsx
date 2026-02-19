@@ -2,8 +2,8 @@
 import { motion } from "framer-motion";
 import { Zap, Map, ShieldCheck, ArrowRight } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/../components/shared/Navbar";
-import Footer from "@/../components/shared/Footer";
+import Navbar from "@/components/shared/Navbar";
+import Footer from "@/components/shared/Footer";
 
 export default function ProLandingPage() {
   return (

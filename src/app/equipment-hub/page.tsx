@@ -5,8 +5,8 @@ import {
   MapPin, Zap, Layers, Video, ArrowLeft
 } from "lucide-react";
 import Link from "next/link";
-import Navbar from "@/../components/shared/Navbar";
-import Footer from "@/../components/shared/Footer";
+import Navbar from "../../components/shared/Navbar";
+import Footer from "../../components/shared/Footer";
 
 export default function EquipmentHubPage() {
   return (

@@ -7,8 +7,9 @@ import { auth, db } from "@/lib/firebase";
 type AuthContextType = {
   user: User | null;
   loading: boolean;
-  isOnboarded: boolean;
+  hasJoinedWaitlist: boolean; // Renamed for clarity in the new model
   isVerified: boolean;
+  waitlistType: "employed" | "unemployed" | null;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -16,8 +17,9 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [isOnboarded, setIsOnboarded] = useState(false);
+  const [hasJoinedWaitlist, setHasJoinedWaitlist] = useState(false);
   const [isVerified, setIsVerified] = useState(false);
+  const [waitlistType, setWaitlistType] = useState<"employed" | "unemployed" | null>(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (fbUser) => {
@@ -25,24 +27,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(fbUser);
         setIsVerified(fbUser.emailVerified);
 
-        // Listen to the user document for onboarding status
+        /** * STRATEGY: Listen to the "users" doc. 
+         * Once they finish the survey, we update hasJoinedWaitlist 
+         * so the app knows to show them the "Success" screen instead of the survey.
+         */
         const userRef = doc(db, "users", fbUser.uid);
         const unsubDoc = onSnapshot(userRef, (snap) => {
           if (snap.exists()) {
-            setIsOnboarded(snap.data().hasCompletedOnboarding === true);
+            const data = snap.data();
+            setHasJoinedWaitlist(data.hasJoinedWaitlist === true);
+            setWaitlistType(data.waitlistType || null);
           }
           setLoading(false);
         });
 
-        // Auto-reload user to check for email verification
+        // Auto-reload to detect email verification in real-time
         if (!fbUser.emailVerified) {
           const interval = setInterval(async () => {
-            await reload(fbUser);
-            if (auth.currentUser?.emailVerified) {
-              setIsVerified(true);
-              clearInterval(interval);
+            try {
+              await reload(fbUser);
+              if (auth.currentUser?.emailVerified) {
+                setIsVerified(true);
+                clearInterval(interval);
+              }
+            } catch (e) {
+              console.error("Reload failed", e);
             }
           }, 3000);
+
           return () => {
             clearInterval(interval);
             unsubDoc();
@@ -51,7 +63,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         return () => unsubDoc();
       } else {
         setUser(null);
-        setIsOnboarded(false);
+        setHasJoinedWaitlist(false);
+        setWaitlistType(null);
         setLoading(false);
       }
     });
@@ -60,7 +73,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, loading, isOnboarded, isVerified }}>
+    <AuthContext.Provider value={{ user, loading, hasJoinedWaitlist, isVerified, waitlistType }}>
       {children}
     </AuthContext.Provider>
   );

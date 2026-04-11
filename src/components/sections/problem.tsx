@@ -1,6 +1,6 @@
 "use client";
 import { Reveal } from "../animations/Reveal";
-import { X, Check } from "lucide-react"; // Using Lucide for cleaner responsive icons
+import { X, Check } from "lucide-react"; 
 
 export default function Problem() {
   return (
@@ -23,15 +23,19 @@ export default function Problem() {
             <ul className="space-y-4 md:space-y-6 text-slate-500 text-base md:text-lg">
               <li className="flex gap-4 items-start">
                 <X className="text-red-400 shrink-0 mt-1" size={20} />
-                <span>Endless bidding wars for basic jobs</span>
+                <span>Calling multiple contractors just to get a single reply</span>
               </li>
               <li className="flex gap-4 items-start">
                 <X className="text-red-400 shrink-0 mt-1" size={20} />
-                <span>Unverified quotes that change last minute</span>
+                <span>Comparing confusing quotes scattered across WhatsApps</span>
               </li>
               <li className="flex gap-4 items-start">
                 <X className="text-red-400 shrink-0 mt-1" size={20} />
-                <span>No safety protocols for service in your home</span>
+                <span>Blindly trusting unvetted strangers in your home</span>
+              </li>
+              <li className="flex gap-4 items-start">
+                <X className="text-red-400 shrink-0 mt-1" size={20} />
+                <span>Awkward cash negotiations and surprise call-out fees</span>
               </li>
             </ul>
           </div>
@@ -45,15 +49,19 @@ export default function Problem() {
             <ul className="space-y-4 md:space-y-6 text-lg md:text-xl">
               <li className="flex gap-4 items-start">
                 <Check className="text-green-400 shrink-0 mt-1" size={24} />
-                <span className="font-bold">Instant, fixed-price booking</span>
+                <span className="font-bold">Post once and let competitive bids come to you</span>
               </li>
               <li className="flex gap-4 items-start">
                 <Check className="text-green-400 shrink-0 mt-1" size={24} />
-                <span className="font-bold">Vetted professionals you can trust</span>
+                <span className="font-bold">Compare prices, profiles, and reviews in one place</span>
               </li>
               <li className="flex gap-4 items-start">
                 <Check className="text-green-400 shrink-0 mt-1" size={24} />
-                <span className="font-bold">Cashless payments & tracking</span>
+                <span className="font-bold">Strictly vetted, ID-verified professionals</span>
+              </li>
+              <li className="flex gap-4 items-start">
+                <Check className="text-green-400 shrink-0 mt-1" size={24} />
+                <span className="font-bold">Secure, cashless payments via the platform</span>
               </li>
             </ul>
           </div>

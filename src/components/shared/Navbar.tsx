@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Hammer, User, ChevronDown, LogIn, ArrowLeft, Linkedin, Facebook, MessageCircle, LayoutDashboard, LogOut } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image"; // <-- Added Next.js Image import
 import { auth } from "@/lib/firebase"; 
 import { onAuthStateChanged, signOut, User as FirebaseUser } from "firebase/auth";
 
@@ -41,9 +42,18 @@ export default function Navbar() {
         animate={{ y: 0 }}
         className="fixed top-0 w-full z-[100] px-4 md:px-6 py-4 flex justify-between items-center backdrop-blur-xl bg-white/80 border-b border-slate-200/50"
       >
-        {/* Logo */}
-        <Link href="/" className="text-2xl font-black tracking-tighter text-indigo-600">
-          Foona<span className="text-fuchsia-500">.</span>
+        <div className="max-w-7xl mx-auto w-full px-1 md:px-6 py-0 flex justify-between items-center">
+
+        {/* LOGO: Image + Fuchsia Dot */}
+        <Link href="/" className="flex items-end gap-1">
+          <Image 
+            src="/foona-logo.png" 
+            alt="Foona" 
+            width={1800} 
+            height={480} 
+            className="h-20 w-auto object-contain"
+            priority 
+          />
         </Link>
         
         {/* Desktop Links */}
@@ -129,6 +139,7 @@ export default function Navbar() {
             <Menu size={22} className="text-slate-900" />
           </button>
         </div>
+        </div>
       </motion.nav>
 
       {/* Fullscreen Mobile Menu */}
@@ -148,7 +159,18 @@ export default function Navbar() {
               >
                 <ArrowLeft size={16} /> Close
               </button>
-              <div className="text-xl font-black tracking-tighter text-indigo-500">Foona.</div>
+              
+              {/* MOBILE MENU LOGO: Image + Fuchsia Dot */}
+              <div className="flex items-end gap-1">
+                <Image 
+                  src="/foona-logo.png" 
+                  alt="Foona" 
+                  width={150} 
+                  height={40} 
+                  className="h-10 w-auto object-contain brightness-0 invert" 
+                />
+                <span className="text-fuchsia-500 font-black text-4xl leading-[0.55]">.</span>
+              </div>
             </div>
 
             <div className="flex-1 flex flex-col justify-center px-8">

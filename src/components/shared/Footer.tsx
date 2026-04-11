@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { Facebook, Linkedin, Instagram, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -10,9 +12,18 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="sm:col-span-2">
-            <div className="text-3xl font-black text-[#4f46e5] mb-6 tracking-tighter">
-              Foona<span className="text-fuchsia-500">.</span>
-            </div>
+            {/* UPDATED LOGO FOR FOOTER */}
+            <Link href="/" className="flex items-end gap-1 mb-6 w-fit">
+              <Image 
+                src="/foona-logo.png" 
+                alt="Foona" 
+                width={120} 
+                height={32} 
+                className="h-8 w-auto object-contain"
+              />
+              <span className="text-fuchsia-500 font-black text-4xl leading-[0.55]">.</span>
+            </Link>
+            
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-8">
               The infrastructure for South Africa's digital service economy. 
               Starting in Durban, built for the continent.
@@ -32,10 +43,21 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="mt-20 pt-8 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-8">
+          
+          {/* UPDATED SOCIAL ICONS WITH LINKS */}
           <div className="flex gap-6">
-            <SocialIcon icon={<Linkedin size={18} />} />
-            <SocialIcon icon={<Facebook size={18} />} />
-            <SocialIcon icon={<Instagram size={18} />} />
+            <SocialIcon 
+              icon={<Linkedin size={18} />} 
+              href="https://www.linkedin.com/company/tydee-inc/?viewAsMember=true" 
+            />
+            <SocialIcon 
+              icon={<Facebook size={18} />} 
+              href="https://www.facebook.com/FoonaInc" 
+            />
+            <SocialIcon 
+              icon={<Instagram size={18} />} 
+              href="https://www.instagram.com/foonaservices" 
+            />
           </div>
 
           <div className="flex flex-col md:items-end items-center gap-2 text-center md:text-right">
@@ -69,11 +91,17 @@ function FooterColumn({ title, links }: { title: string, links: string[] }) {
   );
 }
 
-function SocialIcon({ icon }: { icon: React.ReactNode }) {
+// UPDATED HELPER COMPONENT TO ACCEPT HREF
+function SocialIcon({ icon, href }: { icon: React.ReactNode, href: string }) {
   return (
-    <div className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-[#4f46e5] hover:text-white cursor-pointer transition-all border border-slate-100">
+    <a 
+      href={href}
+      target="_blank" 
+      rel="noopener noreferrer"
+      className="w-10 h-10 bg-slate-50 rounded-full flex items-center justify-center text-slate-400 hover:bg-[#4f46e5] hover:text-white cursor-pointer transition-all border border-slate-100"
+    >
       {icon}
-    </div>
+    </a>
   );
 }
 

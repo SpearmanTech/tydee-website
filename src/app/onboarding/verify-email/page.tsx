@@ -23,7 +23,7 @@ export default function VerifyEmailPage() {
       
       <h1 className="text-4xl font-black mb-4 tracking-tighter">Check your inbox.</h1>
       <p className="text-slate-400 max-w-sm mx-auto mb-10 leading-relaxed">
-        We've sent a verification link to your email. Please click it to activate your Tydee Pro account.
+        We've sent a verification link to your email. Please click it to activate your GoQa Pro account.
       </p>
 
       <div className="flex flex-col gap-4 w-full max-w-xs">

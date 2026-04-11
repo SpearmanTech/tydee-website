@@ -13,8 +13,8 @@ export default function Hero() {
       <div className="relative w-full max-w-7xl h-[80vh] md:h-[75vh] rounded-[2.5rem] md:rounded-[3rem] overflow-hidden group border border-white/10">
         
         <Image 
-          src="/tydee-pros.png" 
-          alt="Tydee Professionals"
+          src="/Foona-pros.png" 
+          alt="Foona Professionals"
           fill
           className="object-cover object-[center_20%] md:object-center opacity-90 transition-transform duration-1000" 
           priority
@@ -41,7 +41,7 @@ export default function Hero() {
           {/* Action Buttons: Stacked on mobile (w-full), side-by-side on desktop */}
           <div className="flex flex-col md:flex-row items-center gap-4 md:gap-6 w-full md:w-auto mb-10 md:mb-12">
             <button className="w-full md:w-auto bg-[#4f46e5] text-white px-8 md:px-12 py-5 md:py-6 rounded-full font-black text-lg md:text-xl active:scale-95 transition-all">
-              Get Tydee
+              Get Foona
             </button>
             
             <Link href="/pro" className="w-full md:w-auto">

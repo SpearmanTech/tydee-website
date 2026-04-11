@@ -43,7 +43,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" className="text-2xl font-black tracking-tighter text-indigo-600">
-          tydee<span className="text-fuchsia-500">.</span>
+          Foona<span className="text-fuchsia-500">.</span>
         </Link>
         
         {/* Desktop Links */}
@@ -64,7 +64,7 @@ export default function Navbar() {
                 onClick={() => setShowRegisterMenu(!showRegisterMenu)}
                 className="flex items-center gap-2 bg-slate-100 text-slate-900 px-4 py-2.5 rounded-full font-bold text-sm hover:bg-slate-200 transition-all border border-slate-200"
               >
-                Join Tydee <ChevronDown size={14} className={showRegisterMenu ? "rotate-180 transition-transform" : "transition-transform"} />
+                Join Foona <ChevronDown size={14} className={showRegisterMenu ? "rotate-180 transition-transform" : "transition-transform"} />
               </button>
 
               <AnimatePresence>
@@ -148,7 +148,7 @@ export default function Navbar() {
               >
                 <ArrowLeft size={16} /> Close
               </button>
-              <div className="text-xl font-black tracking-tighter text-indigo-500">tydee.</div>
+              <div className="text-xl font-black tracking-tighter text-indigo-500">Foona.</div>
             </div>
 
             <div className="flex-1 flex flex-col justify-center px-8">

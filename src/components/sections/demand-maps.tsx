@@ -65,7 +65,7 @@ export default function DemandMapFeature() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-white italic">hustle is.</span>
             </h2>
             <p className="text-lg md:text-xl text-slate-400 mb-10 md:mb-12 max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
-              Tydee's proprietary Service Heatmap analyzes real-time requests. Position yourself strategically to maximize your bidding success rate.
+              Foona's proprietary Service Heatmap analyzes real-time requests. Position yourself strategically to maximize your bidding success rate.
             </p>
 
             {/* Feature Cards: Stacked on mobile, Grid on desktop */}

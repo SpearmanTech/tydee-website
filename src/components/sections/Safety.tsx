@@ -75,7 +75,7 @@ export default function SafetyFeature() {
               <span className="text-indigo-600 italic">of trust.</span>
             </h2>
             <p className="text-lg md:text-xl text-slate-500 mb-8 md:mb-12 max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
-              Every Tydee Pro undergoes a multi-step vetting process, including criminal record checks and skill validation. Monitor your service in real-time.
+              Every Foona Pro undergoes a multi-step vetting process, including criminal record checks and skill validation. Monitor your service in real-time.
             </p>
 
             <div className="space-y-4 md:space-y-6 max-w-md mx-auto lg:mx-0 text-left">

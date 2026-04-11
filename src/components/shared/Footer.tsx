@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="sm:col-span-2">
             <div className="text-3xl font-black text-[#4f46e5] mb-6 tracking-tighter">
-              tydee<span className="text-fuchsia-500">.</span>
+              Foona<span className="text-fuchsia-500">.</span>
             </div>
             <p className="text-slate-500 text-sm leading-relaxed max-w-xs mb-8">
               The infrastructure for South Africa's digital service economy. 
@@ -24,8 +24,8 @@ export default function Footer() {
           </div>
 
           {/* Navigation Links */}
-          <FooterColumn title="Platform" links={["Customer Hub", "Tydee Pro", "Safety & Trust", "Service Heatmaps"]} />
-          <FooterColumn title="Earn" links={["Professional Signup", "Earnings Dashboard", "Pro Benefits", "Tydee Academy"]} />
+          <FooterColumn title="Platform" links={["Customer Hub", "Foona Pro", "Safety & Trust", "Service Heatmaps"]} />
+          <FooterColumn title="Earn" links={["Professional Signup", "Earnings Dashboard", "Pro Benefits", "Foona Academy"]} />
           <FooterColumn title="Capital" links={["Investor Relations", "Forbes 30U30", "Careers", "Press Room"]} />
           <FooterColumn title="Legal" links={["Privacy Policy", "Terms of Service", "Compliance", "Cookie Policy"]} />
         </div>
@@ -40,7 +40,7 @@ export default function Footer() {
 
           <div className="flex flex-col md:items-end items-center gap-2 text-center md:text-right">
             <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.2em]">
-              © 2026 Tydee Technologies (Pty) Ltd
+              © 2026 Foona Technologies (Pty) Ltd
             </p>
             <p className="text-slate-300 text-[9px] uppercase tracking-[0.1em]">
               Durban, South Africa • Registered PTY

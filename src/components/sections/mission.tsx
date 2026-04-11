@@ -31,7 +31,7 @@ export default function Mission() {
           <p className="text-slate-400 text-lg md:text-3xl font-light leading-relaxed max-w-3xl mx-auto px-2">
             We are solving youth unemployment by digitizing trust. 
             <span className="block mt-4 md:mt-2">
-              Tydee is the infrastructure for a new era of professional independence in South Africa.
+              Foona is the infrastructure for a new era of professional independence in South Africa.
             </span>
           </p>
         </Reveal>

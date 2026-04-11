@@ -20,8 +20,8 @@ export default function UserPath() {
             <div className="relative z-10 bg-slate-900 rounded-[2.5rem] md:rounded-[3.2rem] p-2 md:p-3 shadow-2xl border-[4px] md:border-[6px] border-slate-800">
               <div className="relative aspect-[9/19.5] w-full bg-slate-100 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden">
                 <Image 
-                  src="/tydee-pro-screen.png" 
-                  alt="Tydee Partner Dashboard"
+                  src="/Foona-pro-screen.png" 
+                  alt="Foona Partner Dashboard"
                   fill
                   className="object-cover"
                   priority
@@ -51,7 +51,7 @@ export default function UserPath() {
             Marketplace <br/>at the <span className="text-[#4f46e5] italic">speed</span> of life.
           </h2>
           <p className="text-lg md:text-xl text-slate-500 mb-8 md:mb-12 max-w-lg mx-auto lg:mx-0 leading-relaxed font-light">
-            Tydee digitizes the hustle. Access a constant stream of opportunities in Durban, bid with confidence, and grow your professional reputation.
+            Foona digitizes the hustle. Access a constant stream of opportunities in Durban, bid with confidence, and grow your professional reputation.
           </p>
           
           <ul className="space-y-6 md:space-y-8 text-left max-w-md mx-auto lg:mx-0">

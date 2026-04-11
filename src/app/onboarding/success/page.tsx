@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { CheckCircle2, QrCode, Smartphone, MessageCircle } from "lucide-react";
 
 export default function SuccessPage() {
-  const whatsappMessage = encodeURIComponent("Hey! I just joined Tydee as a Founding Member Pro in Durban. Check it out: https://tydee-website.vercel.app/pro");
+  const whatsappMessage = encodeURIComponent("Hey! I just joined GoQa as a Founding Member Pro in Durban. Check it out: https://GoQa-website.vercel.app/pro");
 
   return (
     <main className="min-h-screen bg-[#050505] text-white flex flex-col items-center py-12 md:py-20 px-6 overflow-x-hidden">

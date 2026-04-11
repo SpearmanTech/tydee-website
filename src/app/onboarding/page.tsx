@@ -100,7 +100,7 @@ export default function DiscoveryOnboarding() {
       },
       {
         id: "squad_leadership",
-        q: "If you secured a massive contract, would you manage a 5-man Tydee Squad?",
+        q: "If you secured a massive contract, would you manage a 5-man Foona Squad?",
         opt: [
           "Yes, ready to scale into CEO",
           "Only if guaranteed",
@@ -177,7 +177,7 @@ export default function DiscoveryOnboarding() {
       },
       {
         id: "dispatch_hub",
-        q: "Would you meet at a physical Tydee Hub for daily work?",
+        q: "Would you meet at a physical Foona Hub for daily work?",
         opt: ["Yes, professional", "No, wait at home", "Only if Wi-Fi is free"],
         canExplain: true,
       },
@@ -219,7 +219,7 @@ export default function DiscoveryOnboarding() {
       },
       {
         id: "barrier_essay",
-        q: "Final Thought: What is the #1 thing Tydee can do for you?",
+        q: "Final Thought: What is the #1 thing Foona can do for you?",
         type: "text",
         placeholder: "I just need a chance...",
       },
@@ -649,11 +649,11 @@ export default function DiscoveryOnboarding() {
                 <SneakPeakCard
                   icon={<Zap className="text-yellow-500" />}
                   title="Instant Payouts"
-                  desc="No more chasing cash. Funds clear to your Tydee Wallet the second you finish a job."
+                  desc="No more chasing cash. Funds clear to your Foona Wallet the second you finish a job."
                 />
                 <SneakPeakCard
                   icon={<Users className="text-indigo-500" />}
-                  title="Tydee Squads"
+                  title="Foona Squads"
                   desc="Access large commercial contracts in Umhlanga as a collective squad leader."
                 />
                 <SneakPeakCard

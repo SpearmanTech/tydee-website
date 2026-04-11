@@ -39,7 +39,7 @@ export default function EquipmentHubPage() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-white to-slate-500 uppercase">Ownership.</span>
             </h1>
             <p className="text-lg md:text-2xl text-slate-400 max-w-3xl font-light leading-relaxed">
-              Transforming every garage into a distributed warehouse. Tydee Asset empowers Durbanites to monetize idle gear and gives Pros the tools to scale.
+              Transforming every garage into a distributed warehouse. Foona Asset empowers Durbanites to monetize idle gear and gives Pros the tools to scale.
             </p>
           </motion.div>
         </div>
@@ -105,10 +105,10 @@ export default function EquipmentHubPage() {
         </div>
       </section>
 
-      {/* 4. THE TYDEE SHIELD */}
+      {/* 4. THE Foona SHIELD */}
       <section className="py-20 md:py-32 px-4 md:px-6 bg-indigo-600 rounded-[2.5rem] md:rounded-[4rem]">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl md:text-7xl font-black mb-12 md:mb-16 tracking-tighter">The Tydee Shield.</h2>
+          <h2 className="text-4xl md:text-7xl font-black mb-12 md:mb-16 tracking-tighter">The Foona Shield.</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 md:gap-12">
             <ShieldItem icon={<Video className="w-8 h-8 md:w-10 md:h-10" />} title="AI Chain of Custody" desc="Mandatory video handoffs with AI damage detection." />
             <ShieldItem icon={<ShieldCheck className="w-8 h-8 md:w-10 md:h-10" />} title="Micro-Insurance" desc="5% Protection Fee baked into every job." />

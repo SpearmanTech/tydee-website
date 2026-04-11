@@ -59,7 +59,7 @@ export default function ProLandingPage() {
           <ProFeature 
             icon={<ShieldCheck className="text-indigo-400 w-7 h-7 md:w-8 md:h-8" />}
             title="Verified Safety"
-            desc="Work with peace of mind. Every customer on tydee is identity-verified before they can book you."
+            desc="Work with peace of mind. Every customer on GoQa is identity-verified before they can book you."
           />
         </div>
       </section>

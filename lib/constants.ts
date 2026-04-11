@@ -7,5 +7,5 @@ export const BRAND_COLORS = {
 
 export const MISSION_STATEMENT = {
   header: "Empowering the next generation of South African talent.",
-  body: "Tydee is more than a service app; it's a social mission to solve youth unemployment through technology and trust.",
+  body: "Foona is more than a service app; it's a social mission to solve youth unemployment through technology and trust.",
 };

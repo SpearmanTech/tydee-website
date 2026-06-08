@@ -1,11 +1,28 @@
 "use client";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Hammer, User, ChevronDown, LogIn, ArrowLeft, Linkedin, Facebook, MessageCircle, LayoutDashboard, LogOut } from "lucide-react";
+import {
+  Menu,
+  X,
+  Hammer,
+  User,
+  ChevronDown,
+  LogIn,
+  ArrowLeft,
+  Linkedin,
+  Facebook,
+  MessageCircle,
+  LayoutDashboard,
+  LogOut,
+} from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { auth } from "@/lib/firebase"; 
-import { onAuthStateChanged, signOut, User as FirebaseUser } from "firebase/auth";
+import { auth } from "@/lib/firebase";
+import {
+  onAuthStateChanged,
+  signOut,
+  User as FirebaseUser,
+} from "firebase/auth";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,118 +54,152 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav 
+      <motion.nav
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className="fixed top-0 w-full z-[100] px-4 md:px-6 py-4 flex justify-between items-center backdrop-blur-xl bg-white/80 border-b border-slate-200/50"
       >
         <div className="max-w-7xl mx-auto w-full px-1 md:px-6 py-0 flex justify-between items-center">
+          {/* LOGO: Image + Fuchsia Dot */}
+          <Link href="/" className="flex items-end gap-1">
+            <Image
+              src="/foona-logo.png"
+              alt="Foona"
+              width={1800}
+              height={480}
+              className="h-20 w-auto object-contain"
+              priority
+            />
+          </Link>
 
-        {/* LOGO: Image + Fuchsia Dot */}
-        <Link href="/" className="flex items-end gap-1">
-          <Image 
-            src="/foona-logo.png" 
-            alt="Foona" 
-            width={1800} 
-            height={480} 
-            className="h-20 w-auto object-contain"
-            priority 
-          />
-        </Link>
-        
-        {/* Desktop Links */}
-        <div className="hidden lg:flex gap-8 items-center font-bold text-[11px] uppercase tracking-[0.2em] text-slate-500">
-          {menuLinks.map((link) => (
-            <Link key={link.name} href={link.href} className="hover:text-indigo-600 transition-colors">
-              {link.name}
-            </Link>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-2 md:gap-4">
-          {/* Register Dropdown - Only show if not logged in */}
-          {!user && (
-            <div className="relative hidden sm:block">
-              <button 
-                onMouseEnter={() => setShowRegisterMenu(true)}
-                onClick={() => setShowRegisterMenu(!showRegisterMenu)}
-                className="flex items-center gap-2 bg-slate-100 text-slate-900 px-4 py-2.5 rounded-full font-bold text-sm hover:bg-slate-200 transition-all border border-slate-200"
+          {/* Desktop Links */}
+          <div className="hidden lg:flex gap-8 items-center font-bold text-[11px] uppercase tracking-[0.2em] text-slate-500">
+            {menuLinks.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="hover:text-indigo-600 transition-colors"
               >
-                Join Foona <ChevronDown size={14} className={showRegisterMenu ? "rotate-180 transition-transform" : "transition-transform"} />
-              </button>
-
-              <AnimatePresence>
-                {showRegisterMenu && (
-                  <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    onMouseLeave={() => setShowRegisterMenu(false)}
-                    className="absolute right-0 mt-3 w-64 bg-white rounded-3xl shadow-2xl shadow-indigo-200/50 border border-slate-100 p-2 overflow-hidden"
-                  >
-                    {/* Changed to <a> tag targeting the /pro proxy */}
-                    <a href="/pro/onboarding" className="flex items-center gap-4 w-full p-4 hover:bg-indigo-50 rounded-2xl transition-colors text-left group">
-                      <div className="bg-indigo-100 p-2 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-                        <Hammer size={18} />
-                      </div>
-                      <div>
-                        <p className="font-bold text-sm text-slate-900">Professional</p>
-                        <p className="text-[10px] text-slate-500 uppercase tracking-wider">Start Earning</p>
-                      </div>
-                    </a>
-                    
-                    {/* Changed to <a> tag targeting the /app proxy */}
-                    <a href="/app/register?mode=signup" className="flex items-center gap-4 w-full p-4 hover:bg-fuchsia-50 rounded-2xl transition-colors text-left group">
-                      <div className="bg-fuchsia-100 p-2 rounded-lg group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">
-                        <User size={18} />
-                      </div>
-                      <div>
-                        <p className="font-bold text-sm text-slate-900">Customer</p>
-                        <p className="text-[10px] text-slate-500 uppercase tracking-wider">Book a Service</p>
-                      </div>
-                    </a>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          )}
-
-          {/* DYNAMIC AUTH BUTTON */}
-          {!loading && (
-            user ? (
-              <Link 
-                href="/dashboard" 
-                className="bg-indigo-600 text-white px-4 md:px-6 py-2.5 rounded-full font-bold text-xs md:text-sm hover:bg-black transition-all flex items-center gap-2 shadow-lg shadow-indigo-200 active:scale-95"
-              >
-                <LayoutDashboard size={14} /> 
-                <span className="hidden xs:inline uppercase tracking-widest">Dashboard</span>
+                {link.name}
               </Link>
-            ) : (
-              <a 
-                href="/app/login" 
-                className="bg-black text-white px-4 md:px-6 py-2.5 rounded-full font-bold text-xs md:text-sm hover:bg-indigo-600 transition-all flex items-center gap-2 shadow-lg active:scale-95"
-              >
-                <LogIn size={14} /> 
-                <span className="hidden xs:inline uppercase tracking-widest">Sign In</span>
-              </a>
-            )
-          )}
+            ))}
+          </div>
 
-          {/* Hamburger Menu Toggle */}
-          <button 
-            onClick={() => setIsOpen(true)}
-            className="p-2.5 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors"
-          >
-            <Menu size={22} className="text-slate-900" />
-          </button>
-        </div>
+          <div className="flex items-center gap-2 md:gap-4">
+            {/* Register Dropdown - Only show if not logged in */}
+            {!user && (
+              <div className="relative hidden sm:block">
+                <button
+                  onMouseEnter={() => setShowRegisterMenu(true)}
+                  onClick={() => setShowRegisterMenu(!showRegisterMenu)}
+                  className="flex items-center gap-2 bg-slate-100 text-slate-900 px-4 py-2.5 rounded-full font-bold text-sm hover:bg-slate-200 transition-all border border-slate-200"
+                >
+                  Join Foona{" "}
+                  <ChevronDown
+                    size={14}
+                    className={
+                      showRegisterMenu
+                        ? "rotate-180 transition-transform"
+                        : "transition-transform"
+                    }
+                  />
+                </button>
+
+                <AnimatePresence>
+                  {showRegisterMenu && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      onMouseLeave={() => setShowRegisterMenu(false)}
+                      className="absolute right-0 mt-3 w-64 bg-white rounded-3xl shadow-2xl shadow-indigo-200/50 border border-slate-100 p-2 overflow-hidden"
+                    >
+                      {/* Direct Local Link to Pro App */}
+                      <a
+                        href={`${process.env.NEXT_PUBLIC_PRO_URL}/register`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 w-full p-4 hover:bg-indigo-50 rounded-2xl transition-colors text-left group"
+                      >
+                        <div className="bg-indigo-100 p-2 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                          <Hammer size={18} />
+                        </div>
+                        <div>
+                          <p className="font-bold text-sm text-slate-900">
+                            Professional
+                          </p>
+                          <p className="text-[10px] text-slate-500 uppercase tracking-wider">
+                            Start Earning
+                          </p>
+                        </div>
+                      </a>
+
+                      {/* Direct Local Link to Customer App */}
+                      <a
+                        href={`${process.env.NEXT_PUBLIC_CUSTOMER_URL}/register?mode=signup`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-4 w-full p-4 hover:bg-fuchsia-50 rounded-2xl transition-colors text-left group"
+                      >
+                        <div className="bg-fuchsia-100 p-2 rounded-lg group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">
+                          <User size={18} />
+                        </div>
+                        <div>
+                          <p className="font-bold text-sm text-slate-900">
+                            Customer
+                          </p>
+                          <p className="text-[10px] text-slate-500 uppercase tracking-wider">
+                            Book a Service
+                          </p>
+                        </div>
+                      </a>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
+
+            {/* DYNAMIC AUTH BUTTON */}
+            {!loading &&
+              (user ? (
+                <Link
+                  href="/dashboard"
+                  className="bg-indigo-600 text-white px-4 md:px-6 py-2.5 rounded-full font-bold text-xs md:text-sm hover:bg-black transition-all flex items-center gap-2 shadow-lg shadow-indigo-200 active:scale-95"
+                >
+                  <LayoutDashboard size={14} />
+                  <span className="hidden xs:inline uppercase tracking-widest">
+                    Dashboard
+                  </span>
+                </Link>
+              ) : (
+                <a
+                  href={`${process.env.NEXT_PUBLIC_CUSTOMER_URL}/login`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-black text-white px-4 md:px-6 py-2.5 rounded-full font-bold text-xs md:text-sm hover:bg-indigo-600 transition-all flex items-center gap-2 shadow-lg active:scale-95"
+                >
+                  <LogIn size={14} />
+                  <span className="hidden xs:inline uppercase tracking-widest">
+                    Sign In
+                  </span>
+                </a>
+              ))}
+
+            {/* Hamburger Menu Toggle */}
+            <button
+              onClick={() => setIsOpen(true)}
+              className="p-2.5 bg-slate-100 rounded-full hover:bg-slate-200 transition-colors"
+            >
+              <Menu size={22} className="text-slate-900" />
+            </button>
+          </div>
         </div>
       </motion.nav>
 
       {/* Fullscreen Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -156,23 +207,25 @@ export default function Navbar() {
             className="fixed inset-0 bg-[#050505] z-[110] flex flex-col text-white"
           >
             <div className="px-6 py-6 flex justify-between items-center border-b border-white/10">
-               <button 
+              <button
                 onClick={() => setIsOpen(false)}
                 className="flex items-center gap-2 text-slate-400 font-bold text-xs tracking-widest uppercase"
               >
                 <ArrowLeft size={16} /> Close
               </button>
-              
+
               {/* MOBILE MENU LOGO: Image + Fuchsia Dot */}
               <div className="flex items-end gap-1">
-                <Image 
-                  src="/foona-logo.png" 
-                  alt="Foona" 
-                  width={150} 
-                  height={40} 
-                  className="h-10 w-auto object-contain brightness-0 invert" 
+                <Image
+                  src="/foona-logo.png"
+                  alt="Foona"
+                  width={150}
+                  height={40}
+                  className="h-10 w-auto object-contain brightness-0 invert"
                 />
-                <span className="text-fuchsia-500 font-black text-4xl leading-[0.55]">.</span>
+                <span className="text-fuchsia-500 font-black text-4xl leading-[0.55]">
+                  .
+                </span>
               </div>
             </div>
 
@@ -201,11 +254,18 @@ export default function Navbar() {
             <div className="p-8 bg-white/5 border-t border-white/10 space-y-8">
               <div className="flex items-center justify-between">
                 <div className="flex gap-4">
-                  <div className="p-3 bg-white/5 rounded-full border border-white/10 text-white"><Facebook size={18} /></div>
-                  <div className="p-3 bg-white/5 rounded-full border border-white/10 text-white"><Linkedin size={18} /></div>
+                  <div className="p-3 bg-white/5 rounded-full border border-white/10 text-white">
+                    <Facebook size={18} />
+                  </div>
+                  <div className="p-3 bg-white/5 rounded-full border border-white/10 text-white">
+                    <Linkedin size={18} />
+                  </div>
                 </div>
                 {user && (
-                  <button onClick={handleLogout} className="text-red-400 font-bold text-xs tracking-widest uppercase flex items-center gap-2">
+                  <button
+                    onClick={handleLogout}
+                    className="text-red-400 font-bold text-xs tracking-widest uppercase flex items-center gap-2"
+                  >
                     <LogOut size={14} /> Logout
                   </button>
                 )}
@@ -213,11 +273,21 @@ export default function Navbar() {
 
               <div className="flex flex-col gap-3">
                 {user ? (
-                  <Link href="/dashboard" onClick={() => setIsOpen(false)} className="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 uppercase tracking-widest">
+                  <Link
+                    href="/dashboard"
+                    onClick={() => setIsOpen(false)}
+                    className="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 uppercase tracking-widest"
+                  >
                     <LayoutDashboard size={18} /> My Dashboard
                   </Link>
                 ) : (
-                  <a href="/pro/onboarding" onClick={() => setIsOpen(false)} className="bg-white text-black px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 uppercase tracking-widest">
+                  <a
+                    href={`${process.env.NEXT_PUBLIC_PRO_URL}/register`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsOpen(false)}
+                    className="bg-white text-black px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 uppercase tracking-widest"
+                  >
                     <Hammer size={18} /> Register as Pro
                   </a>
                 )}

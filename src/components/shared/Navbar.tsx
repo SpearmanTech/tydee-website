@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Hammer, User, ChevronDown, LogIn, ArrowLeft, Linkedin, Facebook, MessageCircle, LayoutDashboard, LogOut } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image"; // <-- Added Next.js Image import
+import Image from "next/image";
 import { auth } from "@/lib/firebase"; 
 import { onAuthStateChanged, signOut, User as FirebaseUser } from "firebase/auth";
 
@@ -86,7 +86,8 @@ export default function Navbar() {
                     onMouseLeave={() => setShowRegisterMenu(false)}
                     className="absolute right-0 mt-3 w-64 bg-white rounded-3xl shadow-2xl shadow-indigo-200/50 border border-slate-100 p-2 overflow-hidden"
                   >
-                    <Link href="/onboarding" className="flex items-center gap-4 w-full p-4 hover:bg-indigo-50 rounded-2xl transition-colors text-left group">
+                    {/* Changed to <a> tag targeting the /pro proxy */}
+                    <a href="/pro/onboarding" className="flex items-center gap-4 w-full p-4 hover:bg-indigo-50 rounded-2xl transition-colors text-left group">
                       <div className="bg-indigo-100 p-2 rounded-lg group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                         <Hammer size={18} />
                       </div>
@@ -94,8 +95,10 @@ export default function Navbar() {
                         <p className="font-bold text-sm text-slate-900">Professional</p>
                         <p className="text-[10px] text-slate-500 uppercase tracking-wider">Start Earning</p>
                       </div>
-                    </Link>
-                    <Link href="/register/customer" className="flex items-center gap-4 w-full p-4 hover:bg-fuchsia-50 rounded-2xl transition-colors text-left group">
+                    </a>
+                    
+                    {/* Changed to <a> tag targeting the /app proxy */}
+                    <a href="/app/register?mode=signup" className="flex items-center gap-4 w-full p-4 hover:bg-fuchsia-50 rounded-2xl transition-colors text-left group">
                       <div className="bg-fuchsia-100 p-2 rounded-lg group-hover:bg-fuchsia-600 group-hover:text-white transition-colors">
                         <User size={18} />
                       </div>
@@ -103,7 +106,7 @@ export default function Navbar() {
                         <p className="font-bold text-sm text-slate-900">Customer</p>
                         <p className="text-[10px] text-slate-500 uppercase tracking-wider">Book a Service</p>
                       </div>
-                    </Link>
+                    </a>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -121,13 +124,13 @@ export default function Navbar() {
                 <span className="hidden xs:inline uppercase tracking-widest">Dashboard</span>
               </Link>
             ) : (
-              <Link 
-                href="/login" 
+              <a 
+                href="/app/login" 
                 className="bg-black text-white px-4 md:px-6 py-2.5 rounded-full font-bold text-xs md:text-sm hover:bg-indigo-600 transition-all flex items-center gap-2 shadow-lg active:scale-95"
               >
                 <LogIn size={14} /> 
                 <span className="hidden xs:inline uppercase tracking-widest">Sign In</span>
-              </Link>
+              </a>
             )
           )}
 
@@ -214,9 +217,9 @@ export default function Navbar() {
                     <LayoutDashboard size={18} /> My Dashboard
                   </Link>
                 ) : (
-                  <Link href="/onboarding" onClick={() => setIsOpen(false)} className="bg-white text-black px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 uppercase tracking-widest">
+                  <a href="/pro/onboarding" onClick={() => setIsOpen(false)} className="bg-white text-black px-8 py-4 rounded-2xl font-black text-sm flex items-center justify-center gap-2 uppercase tracking-widest">
                     <Hammer size={18} /> Register as Pro
-                  </Link>
+                  </a>
                 )}
               </div>
             </div>

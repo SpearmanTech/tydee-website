@@ -49,7 +49,7 @@ export default function Navbar() {
     { name: "Mission", href: "#mission" },
     { name: "Asset Hub", href: "/equipment-hub" },
     { name: "Safety", href: "#safety" },
-    { name: "Support", href: "#support" },
+    { name: "Support", href: "/support" },
   ];
 
   return (

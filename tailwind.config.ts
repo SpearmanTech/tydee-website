@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        tydee: {
+        Foona: {
           indigo: "#4f46e5",
           magenta: "#ff00ff",
           proBlue: "#0000AA",

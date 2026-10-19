@@ -6,7 +6,9 @@ import {
   CheckCircle2,
   ChevronDown,
   CreditCard,
+  Facebook,
   HelpCircle,
+  Instagram,
   LifeBuoy,
   Mail,
   MessageCircle,
@@ -16,13 +18,19 @@ import {
   Wrench,
   Zap,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
-const SUPPORT_EMAIL  = "support@foona.co.za";
-const WHATSAPP_URL   = "https://wa.me/27679305784";
-const WHATSAPP_LABEL = "whatsapp";
+const SUPPORT_EMAIL   = "support@foona.co.za";
+const WHATSAPP_URL    = "https://wa.me/27789465946?text=Hi%20Foona%2C%20I%20scanned%20your%20QR%20code%20and%20would%20like%20to%20get%20in%20touch!";
+const WHATSAPP_LABEL  = "+27 78 946 5946";
+
+// Update these two URLs with your exact Facebook & Instagram profile handles:
+const INSTAGRAM_URL   = "https://www.instagram.com/getfoona/";
+const INSTAGRAM_LABEL = "@Foona";
+const FACEBOOK_URL    = "https://web.facebook.com/FoonaInc/";
+const FACEBOOK_LABEL  = "Foona South Africa";
 
 // ─── FAQ Data ─────────────────────────────────────────────────────────────────
 
@@ -194,10 +202,10 @@ function FaqItem({
 }) {
   const [open, setOpen] = useState(false);
 
-  const border  = dark ? "border-white/10"    : "border-slate-200";
-  const qColor  = dark ? "text-white"          : "text-[#0a0f1e]";
-  const aColor  = dark ? "text-slate-400"      : "text-slate-500";
-  const iconCol = dark ? "text-indigo-400"     : "text-indigo-500";
+  const border  = dark ? "border-white/10"       : "border-slate-200";
+  const qColor  = dark ? "text-white"            : "text-[#0a0f1e]";
+  const aColor  = dark ? "text-slate-400"        : "text-slate-500";
+  const iconCol = dark ? "text-indigo-400"       : "text-indigo-500";
   const hoverBg = dark ? "hover:bg-white/[0.03]" : "hover:bg-indigo-50/40";
 
   return (
@@ -244,7 +252,6 @@ function FaqSection({
   const ghostNum = dark ? "text-white/[0.025]" : "text-indigo-500/[0.06]";
   const label    = dark ? "text-indigo-400"    : "text-indigo-600";
   const heading  = dark ? "text-white"         : "text-[#0a0f1e]";
-  const dividerBg = dark ? "bg-white/10"       : "bg-slate-200";
   const bg       = dark ? "bg-[#050505]"       : "bg-white";
 
   return (
@@ -269,7 +276,7 @@ function FaqSection({
 
           {/* Section label + title */}
           <div className="mb-10 md:mb-14 relative">
-            <div className={`flex items-center gap-3 mb-4`}>
+            <div className="flex items-center gap-3 mb-4">
               <div
                 className={`p-2 rounded-xl ${dark ? "bg-indigo-500/20" : "bg-indigo-50"}`}
               >
@@ -311,6 +318,19 @@ function FaqSection({
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function SupportPage() {
+  // Smooth scroll when arriving via QR code hash (#contact-channels)
+  useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash) {
+      const targetId = window.location.hash.substring(1);
+      const element = document.getElementById(targetId);
+      if (element) {
+        setTimeout(() => {
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 150);
+      }
+    }
+  }, []);
+
   // Contact form state
   const [form, setForm] = useState({
     name: "", email: "", category: "", message: "",
@@ -397,8 +417,8 @@ export default function SupportPage() {
         </div>
       </section>
 
-      {/* ── Section 01 — Contact Channels (white) ────────────────────────── */}
-      <section id="contact-channels" className="relative bg-white px-4 md:px-6 py-20 md:py-28 overflow-hidden">
+      {/* ── Section 01 — Contact Channels (white) — QR CODE TARGET ───────── */}
+      <section id="contact-channels" className="scroll-mt-8 relative bg-white px-4 md:px-6 py-20 md:py-28 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -430,14 +450,14 @@ export default function SupportPage() {
               <div className="mt-5 h-[3px] w-12 bg-indigo-500 rounded-full" />
             </div>
 
-            {/* Channel cards */}
-            <div className="grid sm:grid-cols-3 gap-4 max-w-4xl mb-16">
+            {/* Primary Contact Channel Cards (WhatsApp, Email, Response Times) */}
+            <div className="grid sm:grid-cols-3 gap-4 max-w-4xl mb-6">
               {/* WhatsApp */}
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex flex-col justify-between p-6 md:p-8 rounded-3xl border border-slate-200 hover:border-indigo-500/40 hover:bg-indigo-50/40 transition-all"
+                className="group flex flex-col justify-between p-6 md:p-8 rounded-3xl border border-slate-200 hover:border-emerald-500/40 hover:bg-emerald-50/30 transition-all"
               >
                 <div className="p-3 rounded-2xl bg-emerald-50 w-fit mb-6">
                   <MessageCircle size={20} className="text-emerald-600" />
@@ -447,7 +467,7 @@ export default function SupportPage() {
                     WhatsApp
                   </p>
                   <p className="text-slate-500 text-sm font-light mb-4">
-                    Chat with us directly for urgent queries.
+                    Chat with us directly for urgent queries or bookings.
                   </p>
                   <span className="inline-flex items-center gap-1.5 text-emerald-600 font-bold text-sm group-hover:gap-2.5 transition-all">
                     {WHATSAPP_LABEL}
@@ -469,7 +489,7 @@ export default function SupportPage() {
                     Email Support
                   </p>
                   <p className="text-slate-500 text-sm font-light mb-4">
-                    Detailed queries, disputes, and documentation.
+                    Detailed queries, quotes, and documentation.
                   </p>
                   <span className="inline-flex items-center gap-1.5 text-indigo-600 font-bold text-sm group-hover:gap-2.5 transition-all">
                     {SUPPORT_EMAIL}
@@ -489,9 +509,9 @@ export default function SupportPage() {
                   </p>
                   <ul className="space-y-2 mt-3">
                     {[
-                      { label: "General queries",    time: "Within 24 hours" },
-                      { label: "Payment disputes",   time: "Within 72 hours" },
-                      { label: "Safety incidents",   time: "Within 2 hours"  },
+                      { label: "General queries",     time: "Within 24 hours" },
+                      { label: "Payment disputes",    time: "Within 72 hours" },
+                      { label: "Safety incidents",    time: "Within 2 hours"  },
                       { label: "Verification status", time: "Within 24 hours" },
                     ].map((row) => (
                       <li key={row.label} className="flex items-start justify-between gap-4">
@@ -502,6 +522,61 @@ export default function SupportPage() {
                   </ul>
                 </div>
               </div>
+            </div>
+
+            {/* Social Media Channels (Instagram & Facebook) */}
+            <div className="grid sm:grid-cols-2 gap-4 max-w-4xl mb-16">
+              {/* Instagram */}
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-6 rounded-3xl border border-slate-200 hover:border-pink-500/40 hover:bg-pink-50/30 transition-all"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3.5 rounded-2xl bg-pink-50 text-pink-600 shrink-0">
+                    <Instagram size={20} />
+                  </div>
+                  <div>
+                    <p className="font-black text-[#0a0f1e] text-base leading-tight mb-0.5">
+                      Instagram
+                    </p>
+                    <p className="text-slate-500 text-xs font-light">
+                      See recent jobs, transformations & verified Pros.
+                    </p>
+                  </div>
+                </div>
+                <span className="inline-flex items-center gap-1 text-pink-600 font-bold text-xs sm:text-sm shrink-0 ml-4 group-hover:translate-x-0.5 transition-transform">
+                  {INSTAGRAM_LABEL}
+                  <ArrowUpRight size={14} />
+                </span>
+              </a>
+
+              {/* Facebook */}
+              <a
+                href={FACEBOOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between p-6 rounded-3xl border border-slate-200 hover:border-blue-600/40 hover:bg-blue-50/40 transition-all"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="p-3.5 rounded-2xl bg-blue-50 text-blue-600 shrink-0">
+                    <Facebook size={20} />
+                  </div>
+                  <div>
+                    <p className="font-black text-[#0a0f1e] text-base leading-tight mb-0.5">
+                      Facebook
+                    </p>
+                    <p className="text-slate-500 text-xs font-light">
+                      Community updates, reviews & service announcements.
+                    </p>
+                  </div>
+                </div>
+                <span className="inline-flex items-center gap-1 text-blue-600 font-bold text-xs sm:text-sm shrink-0 ml-4 group-hover:translate-x-0.5 transition-transform">
+                  {FACEBOOK_LABEL}
+                  <ArrowUpRight size={14} />
+                </span>
+              </a>
             </div>
 
             {/* Quick nav to FAQ sections */}
@@ -719,7 +794,6 @@ export default function SupportPage() {
                         <Send size={15} />
                         Send Message
                       </button>
-                      
                     </div>
                   </motion.form>
                 )}
@@ -740,7 +814,25 @@ export default function SupportPage() {
               Durban, KwaZulu-Natal · South Africa
             </p>
           </div>
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8">
+          <div className="flex flex-wrap items-center gap-6 sm:gap-8">
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-slate-500 hover:text-white text-sm font-medium transition-colors"
+            >
+              <Instagram size={14} />
+              Instagram
+            </a>
+            <a
+              href={FACEBOOK_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-slate-500 hover:text-white text-sm font-medium transition-colors"
+            >
+              <Facebook size={14} />
+              Facebook
+            </a>
             <a
               href={`mailto:${SUPPORT_EMAIL}`}
               className="inline-flex items-center gap-2 text-slate-500 hover:text-white text-sm font-medium transition-colors"
